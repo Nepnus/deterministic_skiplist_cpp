@@ -50,6 +50,7 @@ class memPool {
         Page* newPage();
         memPool();
         memPool(const memPool&);
+        memPool& operator=(const memPool&);
     public:
         memPool(std::uint32_t type_bytesize_, std::uint32_t page_node_num_);
         ~memPool();
