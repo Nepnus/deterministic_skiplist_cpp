@@ -2,8 +2,8 @@
 #ifndef __skiplist_init__
 #define __skiplist_init__
 
-template <typename T, int maxheight>
-skipList<T, maxheight>::skipList():pool_(sizeof(skipNode<T>), 100*maxheight), max_height(maxheight){
+template <typename T, int maxheight, bool iftypeok>
+skipList<T, maxheight, iftypeok>::skipList():pool_(sizeof(skipNode<T>), 20*maxheight), max_height(maxheight){
     if(!pool_.nodes_prepare(3)){
         throw "lack of heap memory.";
     }
@@ -34,8 +34,8 @@ skipList<T, maxheight>::skipList():pool_(sizeof(skipNode<T>), 100*maxheight), ma
     #endif
 }
 
-template <typename T, int maxheight>
-skipList<T, maxheight>::~skipList(){
+template <typename T, int maxheight, bool iftypeok>
+skipList<T, maxheight, iftypeok>::~skipList(){
     skipNode<T>* title_list[maxheight+1];
     skipNode<T>* current = L;
     skipNode<T>* current_right;
