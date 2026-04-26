@@ -2,8 +2,8 @@
 #ifndef __skiplist_insert__
 #define __skiplist_insert__
 
-template <typename T, int maxheight>
-short skipList<T, maxheight>::insert(const T& a){
+template <typename T, int maxheight, bool iftypeok>
+short skipList<T, maxheight, iftypeok>::insert(const T& a){
     if(height >= max_height)
         return 1;
 
