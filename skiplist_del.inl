@@ -2,8 +2,8 @@
 #ifndef __skiplist_del__
 #define __skiplist_del__
 
-template <typename T, int maxheight>
-short skipList<T, maxheight>::del(const T& a){
+template <typename T, int maxheight, bool iftypeok>
+short skipList<T, maxheight, iftypeok>::del(const T& a){
     if(!pool_.nodes_prepare(height))
         return 2;
     
