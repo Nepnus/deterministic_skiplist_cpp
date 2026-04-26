@@ -4,8 +4,8 @@
 #define __skiplist_print__
 #include <iostream>
 
-template <typename T, int maxheight>
-void skipList<T, maxheight>::printlist(){
+template <typename T, int maxheight, bool iftypeok>
+void skipList<T, maxheight, iftypeok>::printlist(){
     skipNode<T>* title_list[maxheight+1];
     skipNode<T>* current = L;
     int i = 0;
@@ -32,8 +32,8 @@ void skipList<T, maxheight>::printlist(){
     }
 }
 
-template <typename T, int maxheight>
-bool skipList<T, maxheight>::check(){
+template <typename T, int maxheight, bool iftypeok>
+bool skipList<T, maxheight, iftypeok>::check(){
     skipNode<T>* title_list[maxheight+1];
     skipNode<T>* current = L;
     skipNode<T>* tmp;
