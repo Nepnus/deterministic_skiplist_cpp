@@ -15,7 +15,9 @@ struct SkipNode{
 template <typename T>
 using skipNode = struct SkipNode<T>;
 
-template <typename T, int maxheight = 60>
+#include "skiplist_checktype.inl"
+
+template <typename T, int maxheight = 60, bool iftypeok = typecheck<T>::value >
 class skipList{
     private:
         memPool pool_;
@@ -31,13 +33,20 @@ class skipList{
         skipNode<T>* L;
         skipNode<T>* downlist[maxheight+1];
         char compare(const skipNode<T>*, const skipNode<T>*);
-        skipList(const skipList&);
+        skipList(const skipList<T, maxheight, iftypeok>&);
+        skipList<T, maxheight, iftypeok>& operator=(const skipList<T, maxheight, iftypeok>&);
     public:
         skipList();
         ~skipList();
         bool find(const T&);
         short insert(const T&);
         short del(const T&);
+        int get_node_num(){
+            return node_num;
+        }
+        int get_height(){
+            return height;
+        }
         void free_memory(){
             pool_.free_emptypage();
         }
@@ -46,6 +55,9 @@ class skipList{
         bool check();
         #endif
 };
+
+template <typename T, int maxheight>
+class skipList<T, maxheight, false>{};
 
 #include "skiplist_init.inl"
 #include "skiplist_find.inl"
