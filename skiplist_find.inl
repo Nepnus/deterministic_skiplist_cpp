@@ -2,8 +2,8 @@
 #ifndef __skiplist_find__
 #define __skiplist_find__
 
-template <typename T, int maxheight>
-char skipList<T, maxheight>::compare(const skipNode<T>* a, const skipNode<T>* b){
+template <typename T, int maxheight, bool iftypeok>
+char skipList<T, maxheight, iftypeok>::compare(const skipNode<T>* a, const skipNode<T>* b){
     if(a->inf && b->inf)
         return 1;
     else if(a->inf)
@@ -20,8 +20,8 @@ char skipList<T, maxheight>::compare(const skipNode<T>* a, const skipNode<T>* b)
     }
 }
 
-template <typename T, int maxheight>
-bool skipList<T, maxheight>::find(const T& a){
+template <typename T, int maxheight, bool iftypeok>
+bool skipList<T, maxheight, iftypeok>::find(const T& a){
     skipNode<T> item;
     item.inf = false;
     item.data_ptr = const_cast<T*> (&a);
