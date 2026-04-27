@@ -34,28 +34,4 @@ skipList<T, maxheight, iftypeok>::skipList():pool_(sizeof(skipNode<T>), 20*maxhe
     #endif
 }
 
-template <typename T, int maxheight, bool iftypeok>
-skipList<T, maxheight, iftypeok>::~skipList(){
-    skipNode<T>* title_list[maxheight+1];
-    skipNode<T>* current = L;
-    skipNode<T>* current_right;
-    int i = 0;
-    while(current != bottom){
-        title_list[i++] = current;
-        current = current->down;
-    }
-
-    for(i=0; i<height; i++){
-        current = title_list[i];
-        while(current != tail){
-            current_right = current->right;
-            pool_.node_free(current);
-            current = current_right;
-        }
-    }
-
-    pool_.node_free(tail);
-    pool_.node_free(bottom);
-}
-
 #endif
