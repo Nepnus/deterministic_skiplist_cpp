@@ -37,7 +37,7 @@ class skipList{
         skipList<T, maxheight, iftypeok>& operator=(const skipList<T, maxheight, iftypeok>&);
     public:
         skipList();
-        ~skipList();
+        ~skipList(){}
         bool find(const T&);
         short insert(const T&);
         short del(const T&);
